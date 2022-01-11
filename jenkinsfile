@@ -21,7 +21,7 @@ pipeline{
       stage('Build image'){
         steps{
         dir("sparkjava-war-example"){
-          sh "docker build -f ../Dockerfile -t tomcat:latest"
+          sh "docker build -f ../Dockerfile -t tomcat:latest ."
            }
           }
          }
