@@ -1,0 +1,50 @@
+pipeline{
+    agent any
+    stages{
+      stage('clone'){
+         steps{
+          sh "git clone https://github.com/kliakos/sparkjava-war-example"
+         }
+      } 
+      
+      stage ('build'){
+        tools{
+         maven:"M3"
+        }
+        steps{
+          dir("sparkjava-war-example"){
+        sh "mvn clean package"
+        }
+        }
+      
+      stage('Build image'){
+        steps{
+        dir("sparkjava-war-example"){
+          sh "docker build -f Dockerfile -t tomcat:latest"
+           }
+          }
+         }
+       stage('Build image'){
+        steps{
+          sh "docker run -it -d --name tomcatwebapp -p 9090:8080 tomcat:latest"
+           }
+          }
+        }
+       }
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+        
+    
