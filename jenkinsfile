@@ -1,22 +1,22 @@
 pipeline{
     agent any
     stages{
-      stage('clone'){
-         steps{
-          sh "git clone https://github.com/kliakos/sparkjava-war-example"
-         }
-      } 
+      //stage('clone'){
+         //steps{
+         // sh "git clone https://github.com/kliakos/sparkjava-war-example"
+        // }
+     // } 
       
-      stage ('build'){
-        tools{
-         maven "M3"
-        }
-        steps{
-          dir("sparkjava-war-example"){
-               sh "mvn clean package"
-          }
-         }
-        }
+      //stage ('build'){
+       // tools{
+       //  maven "M3"
+        //}
+        //steps{
+         // dir("sparkjava-war-example"){
+             //  sh "mvn clean package"
+          //}
+         //}
+        //}
       
       stage('Build image'){
         steps{
